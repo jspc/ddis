@@ -15,8 +15,8 @@ def increment_last ip
 end
 
 
-ip     = '10.0.0.1'
-end_ip = '10.0.1.11'
+ip     = '0.0.0.0'
+end_ip = '255.255.255.255'
 
 until ip == end_ip
   puts ip
