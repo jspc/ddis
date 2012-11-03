@@ -29,8 +29,8 @@ class StoreIPs
   def dump
     0 if @red.sinter "ip.@db.down", "ip.@db.up"
     { 
-      :up    => @red.smembers "ip.#{@db}.up" , 
-      :down  => @red.smembers "ip.#{@db}.down" , 
+      :up    => @red.smembers( "ip.#{@db}.up" ), 
+      :down  => @red.smembers( "ip.#{@db}.down" ), 
     }
   end
 

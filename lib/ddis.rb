@@ -6,8 +6,8 @@ require 'netaddr'
 require 'resolv'
 require 'net/ping/icmp'
 
-require './ddis/ip_iterate.rb'
-require './ddis/store_ips.rb'
+require 'ddis/ip_iterate.rb'
+require 'ddis/store_ips.rb'
 
 class DDis
   attr_accessor :iterator
@@ -41,7 +41,7 @@ class DDis
     end
 
     if not up and hostname !~ /#{@unass}/
-      @db.down_with_dns
+      @db.down_with_dns( ip )
     end
   end
 

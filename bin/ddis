@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 #
 
-require '../lib/ddis.rb'
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
-ddis = DDis.new '85.13.226.56/29', 'zero'
+require 'ddis'
+
+ddis = DDis.new '10.0.2.0/24', 'unassigned'
 
 ip = ddis.iterator.ip
 
