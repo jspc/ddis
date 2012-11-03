@@ -3,6 +3,7 @@
 # Increment IPs
 
 def increment_last ip
+  return nil if ip == ''
   octets = ip.split "."
   last = octets[-1]
 
@@ -18,3 +19,4 @@ puts "10.0.50.1 becomes #{increment_last '10.0.50.1'}"
 puts "10.0.50.254 becomes #{increment_last '10.0.50.254'}"
 puts "10.0.50.255 becomes #{increment_last '10.0.50.255'}"
 puts "10.0.255.255 becomes #{increment_last '10.0.255.255'}"
+puts "255.255.255.255 becomes #{increment_last '255.255.255.255'}"
