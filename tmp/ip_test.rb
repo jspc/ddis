@@ -3,7 +3,7 @@
 # Increment IPs
 
 def increment_last ip
-  return nil if ip == ''
+  return nil if ip == '255.255.255.255'    # End of the line
   octets = ip.split "."
   last = octets[-1]
 
@@ -15,8 +15,10 @@ def increment_last ip
 end
 
 
-puts "10.0.50.1 becomes #{increment_last '10.0.50.1'}"
-puts "10.0.50.254 becomes #{increment_last '10.0.50.254'}"
-puts "10.0.50.255 becomes #{increment_last '10.0.50.255'}"
-puts "10.0.255.255 becomes #{increment_last '10.0.255.255'}"
-puts "255.255.255.255 becomes #{increment_last '255.255.255.255'}"
+ip     = '10.0.0.1'
+end_ip = '10.0.1.11'
+
+until ip == end_ip
+  puts ip
+  ip = increment_last ip
+end
