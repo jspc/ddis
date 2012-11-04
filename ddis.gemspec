@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.authors = ["jspc"]
   s.date = "2012-11-07"
   s.description = "A small utility to determine the conformity of an IP on a network"
+  s.summary = s.description
   s.email = "james@zero-internet.org.uk"
   s.executables = ["ddis"]
   s.extra_rdoc_files = [
@@ -21,3 +22,4 @@ Gem::Specification.new do |s|
     "lib/ddis/ip_iterate.rb" ,
     "lib/ddis/store_ips.rb" ,
    ]
+end
