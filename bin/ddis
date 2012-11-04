@@ -17,20 +17,20 @@ OptionParser.new do |opts|
 
   opts.on("-r", "--range [IP RANGE]", "IP Range to scan against")                    { |r| ip_range = r }
   opts.on("-u", "--unass [UNASSIGNED STRING]", "Text contained in unassigned IPs")   { |u| unassign = u }
-  opts.on("-c", "--count [NUMBER]", "Number of times to run through")                { |c| count = c }
-  opts.on("-s", "--sleep [SECONDS]", "Number of seconds to sleep between runs")      { |s| secs = s }
-  opts.on("-v", "--verbose", "See extra debug")                                      { |v| verose = true }
+  opts.on("-c", "--count [NUMBER]", "Number of times to run through")                { |c| count = Integer c }
+  opts.on("-s", "--sleep [SECONDS]", "Number of seconds to sleep between runs")      { |s| secs = Integer s }
+  opts.on("-v", "--verbose", "See extra debug")                                      { |v| verbose = true }
 end.parse!
 
-ddis = DDis.new ip_range, unassign
+ddis = DDis.new ip_range, unassign, verbose
 ip = ddis.iterator.ip
 
 (0..count).each do |run|
   until ip == nil
-    puts "Testing #{ip}"
+    puts "Testing #{ip}" if verbose
     ddis.test_ip ip
     ip = ddis.iterator.iterate
   end
-  
+  warn "Sleeping for #{secs} seconds" if verbose
   sleep secs
 end
