@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+#
+
+require '../lib/ddis.rb'
+
+ddis = DDis.new '85.13.226.56/29', 'zero'
+
+ip = ddis.iterator.ip
+
+until ip == nil
+  ddis.test_ip ip
+  ip = ddis.iterator.iterate
+end
