@@ -6,13 +6,13 @@ require 'netaddr'
 require 'resolv'
 require 'net/ping/icmp'
 
-require 'ddis/ip_iterate.rb'
-require 'ddis/store_ips.rb'
+require './ddis/ip_iterate.rb'
+require './ddis/store_ips.rb'
 
 class DDis
-  attr_accessor :base, :size
-
-  def initialize range unassigned
+  attr_accessor :iterator
+  
+  def initialize range, unassigned
     @unass    = unassigned
     @resolv   = Resolv.new
     @ping     = Net::Ping::ICMP.new nil, nil, 1
@@ -29,19 +29,20 @@ class DDis
     begin
       hostname = @resolv.getname ip
     rescue
+      puts "Couldn't get host for #{ip}"
       return nil
     end
     
     @ping.host = ip
-    
-    @db.up_no_dns( ip )     if ( @ping.ping? and
-                                 hostname =~ @unass
-                                 )
-    @db.down_with_dns( ip ) if ( !@ping.ping? and
-                                 hostname !~ @unass
-                                 )
-    
+    up = @ping.ping?
+
+    if up and hostname =~ /#{@unass}/
+       @db.up_no_dns( ip )
+    end
+
+    if not up and hostname !~ /#{@unass}/
+      @db.down_with_dns
+    end
   end
-  
+
 end
-  
