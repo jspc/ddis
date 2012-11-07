@@ -1,0 +1,8 @@
+Currently at work (https://simplybusiness.co.uk) I've a large infrastructure to monitor and
+work with. This includes both internal/corporate and production.
+
+One of the largest areas of technical debt we have is our network and DNS setup; we basically
+have IPs no longer in use with hostnames set (which then cause issues in provisioning boxen) and
+IPs which are up and don't have a PTR set.
+
+This, initially, goes out to search for these.
