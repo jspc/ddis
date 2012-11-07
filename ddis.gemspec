@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name = "ddis"
+  s		.name = "ddis"
   s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.description = "A small utility to determine the conformity of an IP on a network"
   s.summary = s.description
   s.email = "james@zero-internet.org.uk"
+  s.homepage = "https://github.com/jspc/ddis"
   s.executables = ["ddis"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -22,4 +23,8 @@ Gem::Specification.new do |s|
     "lib/ddis/ip_iterate.rb" ,
     "lib/ddis/store_ips.rb" ,
    ]
+   s.add_dependency( 'net-ping', '>=1.5.3' )
+   s.add_dependency( 'netaddr',  '>=1.5.0' )
+   s.add_dependency( 'redis',    '>=3.0.2' )
+
 end
