@@ -1,6 +1,13 @@
 ddis
 ==
 
+Install
+--
+
+Gem is over at https://rubygems.org/gems/ddis so a simply `gem install ddis` will do the trick.
+
+Else build it from source.
+
 Usage
 --
 
