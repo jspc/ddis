@@ -27,10 +27,18 @@ ip = ddis.iterator.ip
 
 (0..count).each do |run|
   until ip == nil
-    puts "Testing #{ip}" if verbose
+    warn "Testing #{ip}" if verbose
     ddis.test_ip ip
     ip = ddis.iterator.iterate
   end
   warn "Sleeping for #{secs} seconds" if verbose
   sleep secs
 end
+
+stored_ips = ddis.read_db
+
+puts "IPs which are up and have a PTR matching pattern /#{unassign}/ ::"
+stored_ips[ :up ].each {|ip| puts ip}
+
+puts "IPs which are down yet *dont* match pattern /#{unassign}/ ::"
+stored_ips[ :down ].each {|ip| puts ip}

@@ -49,4 +49,8 @@ class DDis
     end
   end
 
+  def read_db
+    @db.dump
+  end
+
 end
