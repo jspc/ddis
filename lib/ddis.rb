@@ -28,17 +28,12 @@ class DDis
   end
 
   def test_ip ip
-    begin
-      hostname = @resolv.getname ip
-    rescue
-      warn "Couldn't get host for #{ip}"
-      return nil
-    end
+    hostname = @resolv.getname( ip ) || nil
     
     @ping.host = ip
     up = @ping.ping?
 
-    if up and hostname =~ /#{@unass}/
+    if up and ( hostname =~ /#{@unass}/ or hostname.nil? )
       warn "#{ip} is up yet has an invalid hostname" if @verbose
       @db.up_no_dns( ip )
     end
