@@ -31,6 +31,7 @@ ip = ddis.iterator.ip
     ddis.test_ip ip
     ip = ddis.iterator.iterate
   end
+  ddis.save
   warn "Sleeping for #{secs} seconds" if verbose
   sleep secs
 end

@@ -17,13 +17,11 @@ class StoreIPs
   def up_no_dns ip
     @red.srem "ip.#{@db}.down", ip
     @red.sadd "ip.#{@db}.up", ip
-    @red.save
   end
 
   def down_with_dns ip
     @red.srem "ip.#{@db}.up", ip
     @red.sadd "ip.#{@db}.down", ip
-    @red.save
   end
 
   def dump
@@ -32,6 +30,10 @@ class StoreIPs
       :up    => @red.smembers( "ip.#{@db}.up" ), 
       :down  => @red.smembers( "ip.#{@db}.down" ), 
     }
+  end
+
+  def save
+    @red.save
   end
 
 end
