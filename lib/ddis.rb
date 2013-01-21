@@ -52,4 +52,8 @@ class DDis
     @db.dump
   end
 
+  def save
+    @db.save
+  end
+
 end

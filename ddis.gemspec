@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name = "ddis"
-  s.version = "1.2.0"
+  s.version = "1.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["jspc"]
-  s.date = "2013-01-19"
+  s.date = "2013-01-21"
   s.description = "A small utility to determine the conformity of an IP on a network"
   s.summary = s.description
   s.email = "james@zero-internet.org.uk"
