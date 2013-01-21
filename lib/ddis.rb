@@ -28,8 +28,12 @@ class DDis
   end
 
   def test_ip ip
-    hostname = @resolv.getname( ip ) || nil
-    
+    begin
+      hostname = @resolv.getname( ip )
+    rescue
+      hostname = nil
+    end
+
     @ping.host = ip
     up = @ping.ping?
 
