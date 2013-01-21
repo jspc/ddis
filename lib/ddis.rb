@@ -34,8 +34,12 @@ class DDis
       hostname = nil
     end
 
-    @ping.host = ip
-    up = @ping.ping?
+    begin
+      @ping.host = ip
+      up = @ping.ping?
+    rescue
+      warn "Can't ping #{ip}" if @verbose
+    end
 
     if up and ( hostname =~ /#{@unass}/ or hostname.nil? )
       warn "#{ip} is up yet has an invalid hostname" if @verbose
