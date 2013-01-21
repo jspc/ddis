@@ -46,7 +46,7 @@ class DDis
       @db.up_no_dns( ip )
     end
 
-    if not up and hostname !~ /#{@unass}/
+    if not up and ( hostname !~ /#{@unass}/ and ! hostname.nil? )
       warn "#{ip} is down yet has a hostname set" if @verbose
       @db.down_with_dns( ip )
     end
